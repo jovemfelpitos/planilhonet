@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$db = "database";
+$db = "planilhodb";
 $user = "root";
-$pass = "";
+$pass = "mlkzika";
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 if($mysqli->connect_errno) {
