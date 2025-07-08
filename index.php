@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// Se já está logado, redireciona pro index.php
+// Se já está logado, redireciona para busca.php (a página principal após login)
 if (isset($_SESSION['id'])) {
-    header('Location: index.php');
+    header('Location: busca.php');
     exit();
 }
 
@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $mysqli->real_escape_string($_POST['email']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
 
+        // **Importante: para maior segurança, a senha deve ser armazenada hashada e aqui usar password_verify**
+        // Aqui deixei do jeito que tinha, mas recomendo futuramente atualizar o sistema de senha.
+
         $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
@@ -30,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: index.php");
+            header("Location: busca.php");
             exit();
 
         } else {
