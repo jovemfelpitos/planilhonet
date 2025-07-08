@@ -22,7 +22,7 @@ include('protect.php');  // protege a página para só usuários logados
 
 <header id="header" class="d-flex flex-column align-items-center py-4">
     <div class="mb-5">
-        <img src="./img/logocompleta.png" alt="logo" id="logo" class="img-fluid" style="width: 600px;"/>
+        <img src="./img/logocompleta.png" alt="logo" id="logo" class="img-fluid" style="width: 450px;"/>
     </div>
     <form action="" class="d-flex align-items-center">
         <input
