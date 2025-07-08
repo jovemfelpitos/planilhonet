@@ -44,7 +44,7 @@ include('protect.php');  // protege a página para só usuários logados
         />
         <button class="btn btn-dark me-2" type="submit">Pesquisar</button>
         <button class="btn btn-dark me-2" type="button" onclick="window.location.href='busca.php'">Limpar</button>
-        <button class="btn btn-danger" type="button" onclick="window.location.href='index.php'">Sair</button>
+        <button class="btn btn-danger" type="button" onclick="window.location.href='logout.php'">Sair</button>
     </form>
 </header>
 <hr>
