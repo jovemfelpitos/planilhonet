@@ -1,6 +1,6 @@
 <?php
 include('conexao.php');
-include('conexao.php');
+include('protect.php');
 
 if(isset($_POST['email']) || isset($_POST['senha'])) {
 
