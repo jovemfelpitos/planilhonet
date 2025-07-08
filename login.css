@@ -1,11 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
-*{
+* {
     margin: 0;
-    padding:0;
-    font-family: 'Poppins', sans-serif;
-    
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
+
+body {
+    background-color: #343a40;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#logo {
+    width: 430px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input.form-control-sm {
+    background-color: rgb(33, 37, 41);
+    color: #f8f9fa;
+    box-shadow: none;
+    border-bottom-color: transparent;
+}
+
+button {
+    background-color: rgb(33, 37, 41);
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all 250ms;
+}
+
+.btn-dark {
+    background-color: rgb(33, 37, 41);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dee2e6;
+    margin: 20px 0;
+}
+
+#container_principal {
+    border: 1px solid rgb(0, 0, 0);
+    width: 950px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+/* LOGIN PAGE SPECIFIC STYLES */
 
 div.logo {
     margin-left: auto;
@@ -16,6 +85,7 @@ div.logo {
 img {
     width: 200px;
 }
+
 h2 {
     font-weight: 500;
     color: #ffffff;
@@ -26,12 +96,11 @@ h3 {
     color: #ffffff;
 }
 
-#login{
+#login {
     width: 400px;
     margin: auto;
     text-align: center;
     padding: 20px;
-
 }
 
 .aviso {
@@ -39,7 +108,6 @@ h3 {
     padding: 4px;
 }
 
-
-.log1{
+.log1 {
     margin-bottom: 20px;
 }
