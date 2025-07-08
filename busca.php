@@ -58,15 +58,16 @@ if (!isset($_GET['busca'])) {
 
     $sql_code = "SELECT * 
         FROM bd 
-        WHERE CPF LIKE '%$pesquisa%' 
-        OR Nome LIKE '%$pesquisa%' 
-        OR Beneficio LIKE '%$pesquisa%' 
-        OR telefone1 LIKE '%$pesquisa%'  
-        OR telefone2 LIKE '%$pesquisa%'  
-        OR telefone3 LIKE '%$pesquisa%' 
-        OR telefone4 LIKE '%$pesquisa%' 
-        OR telefone5 LIKE '%$pesquisa%' 
-        OR telefone6 LIKE '%$pesquisa%' LIMIT 3";
+        WHERE cpf LIKE '%$pesquisa%' 
+        OR nome LIKE '%$pesquisa%' 
+        OR beneficio LIKE '%$pesquisa%' 
+        OR fone1 LIKE '%$pesquisa%'  
+        OR fone2 LIKE '%$pesquisa%'  
+        OR fone3 LIKE '%$pesquisa%' 
+        OR fone4 LIKE '%$pesquisa%' 
+        OR fone5 LIKE '%$pesquisa%' 
+        OR fone6 LIKE '%$pesquisa%' 
+        LIMIT 3";
 
     $sql_query = $mysqli->query($sql_code) or die("ERRO ao consultar! " . $mysqli->error);
 
@@ -74,13 +75,10 @@ if (!isset($_GET['busca'])) {
         echo '<div class="alert alert-warning" role="alert">Nenhum resultado encontrado...</div>';
     } else {
         while ($dados = $sql_query->fetch_assoc()) {
-            $salario = floatval($dados['Salario']);
-            $especie = $dados['Especie'];
+            $salario = floatval($dados['salario']);
+            $especie = $dados['especie'];
 
-            // Verifica se a espécie é 87 ou 88
             $usa30 = in_array($especie, ['87', '88']);
-
-            // Aplica os percentuais conforme a espécie
             $percentualMargem = $usa30 ? 0.30 : 0.35;
             $parcelaMargem = $salario * $percentualMargem;
             $valorLiberado = $coef > 0 ? $parcelaMargem / $coef : 0;
@@ -103,10 +101,10 @@ if (!isset($_GET['busca'])) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo htmlspecialchars($dados['Nome']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['CPF']); ?></td>
-                            <td><?php echo date("d/m/Y", strtotime($dados['Nascimento'])); ?></td>
-                            <td><?php echo 2025 - date("Y", strtotime($dados['Nascimento'])); ?></td>
+                            <td><?php echo htmlspecialchars($dados['nome']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['cpf']); ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($dados['nascimento'])); ?></td>
+                            <td><?php echo 2025 - date("Y", strtotime($dados['nascimento'])); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -120,18 +118,16 @@ if (!isset($_GET['busca'])) {
                             <th>Telefone 4</th>
                             <th>Telefone 5</th>
                             <th>Telefone 6</th>
-                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo htmlspecialchars($dados['Telefone1']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Telefone2']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Telefone3']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Telefone4']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Telefone5']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Telefone6']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Email']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone1']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone2']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone3']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone4']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone5']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['fone6']); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -147,10 +143,10 @@ if (!isset($_GET['busca'])) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo htmlspecialchars($dados['Beneficio']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Especie']); ?></td>
-                            <td><?php echo date("d/m/Y", strtotime($dados['DIB'])); ?></td>
-                            <td><?php echo date("d/m/Y", strtotime($dados['desbloqueio'])); ?></td>
+                            <td><?php echo htmlspecialchars($dados['beneficio']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['especie']); ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($dados['dib'])); ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($dados['ddb'])); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -167,10 +163,10 @@ if (!isset($_GET['busca'])) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo htmlspecialchars($dados['UF']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Cidade']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['Bairro']); ?></td>
-                            <td><?php echo htmlspecialchars($dados['CEP']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['uf']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['cidade']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['bairro']); ?></td>
+                            <td><?php echo htmlspecialchars($dados['cep']); ?></td>
                             <td><?php echo htmlspecialchars($dados['endereco']); ?></td>
                         </tr>
                     </tbody>
