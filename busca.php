@@ -1,8 +1,6 @@
 <?php
-
 include('conexao.php');
 include('protect.php');  // protege a página para só usuários logados
-
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +33,11 @@ include('protect.php');  // protege a página para só usuários logados
         />
         <input
             name="coef"
-            value="<?php if (isset($_GET['coef'])) echo htmlspecialchars($_GET['coef']); ?>"
+            value="<?php if (isset($_GET['coef'])) echo str_replace('.', ',', htmlspecialchars($_GET['coef'])); ?>"
             placeholder="Coeficiente do dia"
-            type="number"
-            step="0.0001"
+            type="text"
+            inputmode="decimal"
+            pattern="[0-9]+([,][0-9]+)?"
             class="form-control me-2"
             required
         />
@@ -54,7 +53,8 @@ if (!isset($_GET['busca'])) {
     // Nenhuma busca foi feita
 } else {
     $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-    $coef = isset($_GET['coef']) ? floatval($_GET['coef']) : 0;
+    $coefRaw = isset($_GET['coef']) ? $_GET['coef'] : '0';
+    $coef = floatval(str_replace(',', '.', $coefRaw));
 
     $sql_code = "SELECT * 
         FROM bd 
